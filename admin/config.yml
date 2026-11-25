@@ -1,0 +1,27 @@
+backend:
+  name: github
+  repo: ericmichira777-cmd/Wakili-Peter-s-Blog-Website
+  branch: main
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+publish_mode: simple
+
+collections:
+  - name: "blog"
+    label: "Blog Articles"
+    folder: "_posts"
+    create: true
+    delete: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publication Date", name: "date", widget: "datetime" }
+      - { label: "Reading Time (minutes)", name: "read_time", widget: "number" }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Article Content", name: "body", widget: "markdown" }
