@@ -1,0 +1,28 @@
+#title: Chuka Legal Magazine
+#description: A blog sharing ideas on law, knowledge and stories that make law more than statutes.
+#url: ""
+#baseurl: ""
+
+#markdown: kramdown
+#permalink: /:categories/:year/:month/:day/:title/
+
+#collections:
+#  posts:
+#    output: true
+    
+
+title: Chuka Legal Magazine
+description: Legal insights, analysis, news and perspectives.
+
+url: "https://ericmichira777-cmd.github.io"
+baseurl: "/Wakili-Peter-s-Blog-Website"
+
+markdown: kramdown
+permalink: /:categories/:year/:month/:day/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post

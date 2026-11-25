@@ -1,0 +1,545 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Law Student — Stories and notes on law</title>
+<meta name="description" content="The Law Student — a blog on legal stories, case notes, and ideas for anyone studying law.">
+<style>
+
+:root {
+  --ink: #242424;
+  --ink-secondary: #6b6b6b;
+  --ink-faint: #9a9a9a;
+  --paper: #ffffff;
+  --paper-alt: #f7f4ed;
+  --accent: #1a8917;
+  --accent-dark: #0f730c;
+  --gold: /*#b98a2f*/#e7af33;   
+  --ink2: #aaa;
+  --line: #e6e6e6;
+  --radius: 4px;
+  --font-serif: Georgia,"Iowan Old Style", "Times New Roman", serif;
+  --font-sans: Georgia,-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box;}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+img { display: block; max-width: 100%; }
+/*.cover1{
+  position: absolute;
+  background: var(--paper);
+}*/
+
+.hamburger {
+  width: 44px; 
+  height: 40px;
+  background: var(--gold);
+  border: none; 
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  gap: 5px;
+  cursor: pointer;
+  position: relative;
+  top:1px;
+  right: -8px;
+}
+.hamburger span { 
+  width: 22px; 
+  height: 2px; 
+  background: #fff;
+  transition: .25s; 
+  
+}
+  
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.wrap { max-width: 1032px; margin: 0 auto; padding: 0 24px; position:relative;}
+
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--paper);
+  border-bottom: 2px solid var(--ink);
+}
+.site-header .wrap {
+  display: flex; align-items: center;
+  gap: 16px;
+  height: 57px;
+}
+.brand {
+  font-family: var(--font-serif);
+  font-size: 24px; font-weight: 700;
+  letter-spacing: -0.03em;
+  display: flex; align-items: center; gap: 8px;
+}
+.brand img{
+  object-fit: contain;border-radius: 80px;
+}
+.brand-mark {
+  width: 70px; height: 70px; border-radius: 50%;
+  /*background: var(--gold)*/; color: #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 700; font-family: var(--font-sans);
+}
+.nav-menu{display:none;}
+.nav-menu.open { position: sticky;top:58px; z-index:10;margin-left: auto; display:flex;flex-direction:column;align-items: center; gap: 7px; background: black; }
+.nav-menu2{
+  display: none;
+}
+.nav-link {
+  font-size: 14px; color: var(--ink-secondary);
+  padding: 8px 12px; border-radius: 999px;
+}
+.nav-link:hover { color: var(--ink); background: var(--paper-alt); }
+.nav-link.solid { color: var(--ink); } 
+/*.nav-con{border:2px solid black;position:relative;top:90px;right:-20px;color:var(--paper);background: black;}*/
+.btn {
+  border: 1px solid var(--ink);
+  background: transparent; color: var(--ink);
+  font-size: 14px; padding: 8px 16px; border-radius: 999px;
+  transition: background .15s ease, color .15s ease;
+}
+.whatsa{margin: 30px 10px;}
+.btn:hover { background: var(--paper-alt); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.primary:hover { background: var(--accent-dark); }
+.icon-btn {
+  width: 36px; height: 36px; border: none; background: transparent;
+  border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  color: var(--ink-secondary); font-size: 17px;
+}
+.icon-btn:hover { background: var(--paper-alt); color: var(--ink); }
+
+
+.hero { border-bottom: 1px solid var(--line); }
+.hero .wrap { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; padding: 56px 24px 72px; }
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 6vw, 68px);
+  line-height: 1.05; letter-spacing: -0.02em; font-weight: 700;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero p.sub {
+  margin-top: 24px; font-size: 18px; color: var(--ink-secondary); max-width: 480px;
+}
+.hero .cta-row { margin-top: 32px; display: flex; align-items: center; gap: 24px; }
+.hero .cta-row .btn { padding: 10px 24px; font-size: 16px; border-radius: 4px; }
+.hero .cta-row a.more { font-size: 14px; color: var(--accent); text-decoration: underline; }
+.hero-art {
+  border-radius: var(--radius);
+  min-height: 260px;
+  background:
+    linear-gradient(135deg, rgba(185,138,47,.18), rgba(185,138,47,0) 60%),
+    var(--paper-alt);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 120px;
+  border: 1px solid var(--line);
+}
+
+.topics-cloud{
+  margin-left: 13px;
+}
+.topics { border-bottom: 1px solid var(--line); }
+.topics .wrap { display: flex; align-items: center; gap: 12px; padding: 20px 24px; overflow-x: auto; }
+.topics .label { font-size: 14px; color: var(--ink-secondary); flex-shrink: 0; }
+.chip {
+  flex-shrink: 0; font-size: 14px;
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 8px 16px; background: var(--paper);
+  transition: background .15s ease, border-color .15s ease;
+}
+.chip:hover { border-color: var(--ink); background: var(--paper-alt); }
+.chip.active { background: var(--paper-alt); border-color: var(--ink); }
+.chip.more { color: var(--accent); border-color: transparent; }
+
+
+.content .wrap { display: grid; grid-template-columns: 2fr 1fr; gap: 64px; padding-top: 40px; padding-bottom: 80px; }
+
+/* Featured post */
+.featured { border-bottom: 1px solid var(--line); padding-bottom: 32px; margin-bottom: 8px; }
+.post-meta { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--gold); color: #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+}
+.post-meta .name { font-weight: 600; color: var(--ink); }
+.post-meta .dot { color: var(--ink-faint); }
+.post-meta .date, .post-meta .time { color: var(--ink-secondary); }
+
+.featured-grid { display: grid; grid-template-columns: 1fr 200px; gap: 32px; margin-top: 12px; }
+.featured h2 {
+  font-family: var(--font-serif);
+  font-size: 28px; line-height: 1.2; letter-spacing: -0.01em; font-weight: 700;
+}
+.featured p.excerpt {
+  margin-top: 8px; font-size: 16px; color: var(--ink-secondary);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.featured .post-meta { margin-top: 16px; }
+.thumb {
+  width: 200px; height: 134px; border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px; color: rgba(0,0,0,.35);
+}
+.thumb.a { background: linear-gradient(135deg, #f3e8d3, #e8d9bd); }
+.thumb.b { background: linear-gradient(135deg, #dfe8e3, #c8d8cf); }
+.thumb.c { background: linear-gradient(135deg, #e9dfe8, #d6c8d4); }
+.thumb.d { background: linear-gradient(135deg, #e4e2ef, #cfccdf); }
+
+form { display: grid; gap: 12px; margin-top: 24px auto; }
+input, textarea, select {
+  padding: 13px;
+  border: 1px solid #d6d0c9;
+  border-radius: 8px;
+  font: inherit;
+  background: #fff;
+}
+.container { 
+  width: min(1100px, 92%); 
+  margin: 0 auto; 
+  /*color: var(--papers);*/
+}
+.contact-box {
+  background: var(--gold);
+  color: #fff;
+  border-radius: var(--accent);
+  padding: 26px;
+  display: grid; gap: 14px;
+}
+.contact-box a { font-size: 26px; font-weight: 800; }
+.section-title {
+  font-size: clamp(24px, 5vw, 34px);
+  /*text-transform: uppercase;*/
+  margin-bottom: 8px;
+  margin-top: 25px;
+}
+.under{
+  width: 70px; 
+  height: 4px; 
+  background: var(--gold);
+  display: block;
+  margin-top: -7px;
+}
+.post-list { display: grid; gap: 0; }
+.post { display: grid; grid-template-columns: 1fr 160px; gap: 32px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.post h3 {
+  font-family: var(--font-serif);
+  font-size: 20px; line-height: 1.25; font-weight: 700; letter-spacing: -0.01em;
+}
+.post p.excerpt {
+  margin-top: 6px; font-size: 15px; color: var(--ink-secondary);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.post .post-meta { margin-top: 14px; }
+.post .thumb { width: 160px; height: 107px; font-size: 36px; }
+
+
+.sidebar { border-left: 11px solid var(--line); padding-left: 32px; }
+.sidebar h4 {
+  font-size: 15px; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.sidebar .chip { display: inline-block; margin: 0 8px 8px 0; }
+.sidebar .subscribe { margin-top: 40px; }
+.sidebar .subscribe p { font-size: 14px; color: var(--ink-secondary); margin-bottom: 12px; }
+.sidebar frm { display: flex; gap: 8px; }
+.sidebar input[type="email"] {
+  flex: 1; min-width: 0; font-size: 14px; padding: 10px 12px;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  font-family: inherit;
+}
+.sidebar input[type="email"]:focus { outline: 1px solid var(--accent); border-color: var(--accent); }
+.sidebar .btn { background: var(--accent); border-color: var(--accent); color: #fff; }
+.sidebar .btn:hover { background: var(--accent-dark); }
+.sidebar .fine { margin-top: 8px; font-size: 12px; color: var(--ink-faint); }
+.sidebar .reading-list { margin-top: 40px; }
+.sidebar .reading-list ul { list-style: none; }
+.sidebar .reading-list li { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.sidebar .reading-list li a:hover { color: var(--accent); }
+.sidebar .reading-list .tag { font-size: 12px; color: var(--ink-faint); display: block; margin-bottom: 2px; }
+
+.site-footer { background:var(--ink2); border-top: 2px solid var(--ink); padding: 32px 0;margin-top: 10px; font-weight: 100px;color:var(--paper);}
+.site-footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; font-size: 13px; color: var(--ink-secondary); }
+.site-footer .brand { font-size: 18px; }
+.site-footer nav { margin-left: auto; display: flex; gap: 20px; }
+.site-footer nav a:hover { color: var(--ink); }
+
+
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: 1fr; padding: 40px 24px 48px; }
+  .hero-art { min-height: 180px; font-size: 72px; }
+  .content .wrap { grid-template-columns: 1fr; gap: 48px; }
+  .sidebar { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 32px; }
+  .site-footer nav { margin-left: 0; }
+  
+}
+@media (min-width: 640px){
+  .nav-menu2{display:flex;flex-direction: row-reverse;gap:5px;}
+  .hamburger, nav-menu{
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .featured-grid, .post { grid-template-columns: 1fr; }
+  .featured-grid .thumb { width: 100%; height: 180px; }
+  .post .thumb { display: none; }
+  /*.nav-menu .nav-link, .nav-menu .btn:not(.primary) { display: none; }*/
+}
+</style>
+</head>
+<body>
+
+
+<header class="site-header">
+  
+  <div class="wrap">
+    <a class="brand" href="#">
+      <span class="brand-mark"><img src="{{'/assets/clmlogo.png' | relative_url }}" alt="Chuka Legal"></span>
+      Chuka Legal Magazine
+    </a>
+    <div class="ham">
+      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+     </button>
+    </div>
+  </div> 
+     <nav class="nav-menu2">
+      <a class="nav-link" href="#about">About </a>
+      <a class="nav-link" href="#contact">Contact Us</a>
+      <a class="nav-link" href="#">Archive</a>
+      </nav>
+  </header>
+    <nav class="nav-menu">
+      <a class="nav-link" href="#about">About </a>
+      <a class="nav-link" href="#contact">Contact Us</a>
+      <a class="nav-link" href="#">Archive</a>
+    </nav>
+    
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Law is learned in <em>stories,</em> not just statutes.</h1>
+      <p class="sub">Welcome to The Chuka Legal Magazine. Case notes, exam strategy, and plain-English explainers — written by students of the law, for students of the law.</p>
+      <div class="cta-row">
+        <a href="#wrap"class="btn primary">Start reading</a>
+        <!--<a class="more" href="#">Already studying law? Sign in</a>-->
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true"><!--<img src="assets/clm.jpg" alt="">-->
+    <img src="{{ '/assets/clm.jpg' | relative_url }}" alt="Chuka Legal Magazine">
+  </div>
+</section>
+
+<nav class="topics" aria-label="Topics">
+  <div class="wrap">
+    <span class="label">Topics:</span>
+    <!--<button class="chip active">For you</button>-->
+    <button class="chip">Featured</button>
+    <button class="chip">Constitutional Law</button>
+    <button class="chip">Contracts</button>
+    <button class="chip">Criminal Law</button>
+    <button class="chip">Legal Writing</button>
+    
+    
+    
+  </div>
+</nav>
+
+<main class="content">
+  <div id="wrap" class="wrap">
+
+  <div>
+      
+{% assign featured_post = site.posts.first %}
+
+{% if featured_post %}
+<article class="featured">
+    <div class="post-meta">
+        <span class="avatar">KP</span>
+        <span class="name">{{ featured_post.author }}</span>
+        <span>•</span>
+        <span class="date">{{ featured_post.date | date: "%b %d" }}</span>
+        <span>•</span>
+        <span class="time">{{ featured_post.read_time }} min read</span>
+    </div>
+
+    <div class="featured-grid">
+        <div>
+            <h2>
+                <a href="{{ featured_post.url | relative_url }}">
+                    {{ featured_post.title }}
+                </a>
+            </h2>
+
+            <p class="excerpt">
+                {{ featured_post.excerpt | strip_html | truncate: 180 }}
+            </p>
+
+            <div class="post-meta">
+                <span class="name" style="font-weight:400; color:var(--accent); font-size:13px;">
+                    {{ featured_post.category }}
+                </span>
+                <span class="dot">•</span>
+                <span class="time">{{ featured_post.read_time }} min read</span>
+                <span class="dot">·</span>
+                <span class="time">{{ featured_post.date | date: "%b %d" }}</span>
+            </div>
+        </div>
+
+        <div class="thumb a">
+            {% if featured_post.image %}
+            <img src="{{ featured_post.image | relative_url }}"
+                 alt="{{ featured_post.title }}"
+                 style="width:100%; height:100%; object-fit:cover;">
+            {% endif %}
+        </div>
+    </div>
+</article>
+{% endif %}
+
+<div class="post-list">
+    {% for post in site.posts offset:1 %}
+    <article class="post">
+        <div>
+            <div class="post-meta">
+                <span class="name">{{ post.author }}</span>
+                <span class="dot">·</span>
+                <span class="date">{{ post.date | date: "%b %d" }}</span>
+            </div>
+
+            <h3>
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h3>
+
+            <p class="excerpt">
+                {{ post.excerpt | strip_html | truncate: 160 }}
+            </p>
+
+            <div class="post-meta">
+                <span class="time">{{ post.read_time }} min read</span>
+                <span class="dot">·</span>
+                <span class="time">{{ post.category }}</span>
+            </div>
+        </div>
+
+        <div class="thumb b">
+            {% if post.image %}
+            <img src="{{ post.image | relative_url }}"
+                 alt="{{ post.title }}"
+                 style="width:100%; height:100%; object-fit:cover;">
+            {% endif %}
+        </div>
+    </article>
+    {% endfor %}
+</div>
+
+
+      </div>
+    </div>
+
+    <aside class="sidebar">
+      <div class="topics-cloud">
+        <h3 id="about" class="section-title">About Chuka Legal</h3>
+        <span class="under"></span>
+     <p>Chuka Legal Magazine is an independent legal publication dedicated to providing insightful legal analysis, updates and notes on matters law and justice.<br>Our goal is to make legal information accessible, informative and relevant to everyone, while promoting legal awareness and critical thinking.<br> We discuss emerging issues and provide perspectives that contribute to a better understanding of the law for the benefit and success of the students of law.<br><span style="color:var(--gold);"> Chuka legal by Chuka students of Law ,For Chuka students of Law.</span>
+     </p>
+
+      </div>
+      <hr >
+      <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <span class="under"></span>
+      <p class="lead">For enquiries and services, whatsapp us today.</p><br>
+    <div><a href="https://wa.me/254114405362?text=Hello%20I%20am%20inquiring%20about%20Chuka%20legal."class="btn primary whatsa">WhatsApp</a></div><br />
+      
+      <p class="lead">Or if you wish send us an email direct to us by filling the form below</p>
+
+      <form  action="https://formspree.io/f/mqpqypka" method="POST" id="contact-form">
+        
+        <input required type="text" name="name" placeholder="e.g Paul Kagia" />
+        <input required type="text" name="email" placeholder="e.g yourname22@gmail.com">
+        <input type="tel" name="phone" placeholder="Phone number: +254 7********" />
+        
+        
+        <textarea name="message" rows="4" placeholder="How can we help?"></textarea>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        
+      </form>
+    </div>
+  </section>
+
+      <!--<div class="subscribe">
+        <h4>The Brief &#8212; weekly newsletter</h4>
+        <p>One email every Sunday: the week's best case notes and study tips. No spam, ever.</p>
+        <form  action="" method="POST" id="contact-form">
+        
+
+
+
+      <!--<div class="reading-list">
+        <h4>Staff picks</h4>
+        <ul>
+          <li><a href="#"><span class="tag">CRIMINAL LAW &#183; 6 MIN</span>The mens rea trap: why intent questions fool everyone</a></li>
+          <li><a href="#"><span class="tag">STUDY NOTES &#183; 5 MIN</span>How to brief a case in under ten minutes</a></li>
+          <li><a href="#"><span class="tag">CLERKSHIPS &#183; 7 MIN</span>What a week at a chambers actually looks like</a></li>
+        </ul>
+      </div-->
+    </aside>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="brand" href="#"><span class="brand-mark"><img src="{{'/assets/clmlogo.png' | relative_url }}" alt="Chukalegal"></span> Chuka Legal Magazine</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#contact">Contact Us</a>
+      <a href="#">Archive</a>
+      
+    </nav>
+  </div>
+</footer>
+<script>
+  const menu = document.querySelector('.nav-menu');
+  const burger = document.querySelector('.hamburger');
+  if (burger && menu) {
+  burger.addEventListener("click", () => {
+    const isOpen = menu.classList.toggle("open");
+    burger.classList.toggle("open", isOpen);
+    burger.setAttribute("aria-expanded", String(isOpen));
+  });
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("open");
+      burger.classList.remove("open");
+      burger.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+</script>
+</body>
+</html>
