@@ -1,6 +1,6 @@
 backend:
-  name: github
-  repo: ericmichira777-cmd/Wakili-Peter-s-Blog-Website
+  name: turbo-github
+  turbo_site_id: 018ff460-8786-4d85-9550-39b4a8fddc5c
   branch: main
 
 media_folder: "uploads"
